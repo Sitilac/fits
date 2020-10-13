@@ -4,10 +4,10 @@ import { Route, Link, NavLink, Switch } from "react-router-dom";
 import "./App.css";
 import ShowAllOutfits from "./pages/ShowAllOutfits";
 import ShowAllTops from "./pages/ShowAllTops";
-import SignupPage from "./pages/SignupPage";
+import SignupPage from "./pages/userAuth/SignupPage";
 import userService from "./utils/userService";
 import tokenService from "./utils/tokenService";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/userAuth/LoginPage";
 
 class App extends Component {
   state = {

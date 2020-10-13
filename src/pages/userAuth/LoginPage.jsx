@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
-import userService from "../utils/userService"
+import { Link } from "react-router-dom";
+import userService from "../../utils/userService";
 
-class SignupPage extends Component {
+class LoginPage extends Component {
   state = {
     invalidForm: true,
     formData: {
-      name: "",
       email: "",
       password: "",
       message: ""
@@ -18,15 +17,10 @@ class SignupPage extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userService.signup({
-        name: this.state.formData.name,
-        email: this.state.formData.email,
-        password: this.state.formData.password
-      });
+      await userService.login(this.state.formData);
 
       this.props.handleSignupOrLogin();
-      
-      this.props.history.push = ("/");
+      this.props.history.push("/");
     } catch (err) {
       this.updateMessage(err.message);
     }
@@ -46,26 +40,16 @@ class SignupPage extends Component {
   updateMessage = (msg) => {
       this.setState({message: msg});
   }
- 
+
   render() {
     return (
       <>
-        <h1>Sign Up</h1>
+        <h1>Log In</h1>
         <form
           ref={this.formRef}
           autoComplete="off"
           onSubmit={this.handleSubmit}
         >
-          <div className="form-group">
-            <label>Your name (required)</label>
-            <input
-              className="form-control"
-              name="name"
-              value={this.state.formData.name}
-              onChange={this.handleChange}
-              required
-            />
-          </div>
           <div className="form-group">
             <label>Your email (required)</label>
             <input
@@ -86,15 +70,16 @@ class SignupPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-            <button
-              className="btn"
-              disabled={this.state.invalidForm}
-            >
-            SIGN UP
-            </button>
+          <button
+            type="submit"
+            className="btn"
+            disabled={this.state.invalidForm}
+          >
+            LOG IN
+          </button>
         </form>
       </>
     );
   }
 }
-export default SignupPage;
+export default LoginPage;

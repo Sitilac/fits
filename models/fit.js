@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var fitSchema = new Schema({
+  name: {type: String, required: true},
   top:{
     type: Schema.Types.ObjectId,
       ref: "Top",
