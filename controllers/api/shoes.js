@@ -4,6 +4,7 @@ var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
 module.exports = {
   create,
+  index
 }
 
 async function create(req,res){
@@ -13,3 +14,7 @@ async function create(req,res){
   res.status(200).json(shoes);
 }
 
+async function index(req,res){
+  const shoes = await Shoe.find({});
+  res.status(200).json(shoes);
+}
