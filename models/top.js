@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var topSchema = new Schema({
+  name:{type:String, required: true},
   brand:{type:String, required: true},
   price: Number,
   color: String,

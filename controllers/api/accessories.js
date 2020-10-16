@@ -1,4 +1,4 @@
-const Acc = require('../../models/accessorie');
+const Acc = require('../../models/accessory');
 
 
 module.exports = {
@@ -17,7 +17,7 @@ async function create(req,res){
 }
 
 async function index(req,res){
-  const acc = await Acc.find({});
+  const acc = await Acc.find({user:req.params.id});
   res.status(200).json(acc);
 }
 

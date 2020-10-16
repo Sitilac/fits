@@ -14,7 +14,7 @@ async function create(req,res){
 }
 
 async function index(req,res){
-  const bottoms = await Bottom.find({});
+  const bottoms = await Bottom.find({user:req.params.id});
   res.status(200).json(bottoms);
 }
 

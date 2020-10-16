@@ -18,7 +18,7 @@ async function create(req,res){
 }
 
 async function index(req,res){
-  const shoes = await Shoe.find({});
+  const shoes = await Shoe.find({user:req.params.id});
   res.status(200).json(shoes);
 }
 

@@ -15,7 +15,7 @@ var fitSchema = new Schema({
     type: Schema.Types.ObjectId,
       ref: "Shoe",
   },
-  accessorie:{
+  accessory:{
     type: Schema.Types.ObjectId,
       ref: "Accessorie",
   },
