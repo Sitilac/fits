@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import ShoeCard from '../../../components/ShoeCard'
 
 function ShoeDetailsPage(props){
@@ -17,6 +18,14 @@ function ShoeDetailsPage(props){
      >
       DELETE
      </button>
+     <Link
+        className='btn btn-xs btn-warning'
+        to={{
+          pathname: '/editShoe',
+          shoes: {shoe}
+        }}
+      >EDIT
+      </Link>
     </>
   );
 }

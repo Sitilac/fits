@@ -1,10 +1,9 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import BottomCard from '../../../components/BottomCard'
 
 function BottomDetailsPage(props){
   const bottom = props.location.state.bottoms;
-
-  //this.getOne()
   return(
     <>
       <BottomCard
@@ -17,6 +16,14 @@ function BottomDetailsPage(props){
         >
           DELETE
         </button>
+        <Link
+        className='btn btn-xs btn-warning'
+        to={{
+          pathname: '/editBottom',
+          bottoms: {bottom}
+        }}
+      >EDIT
+      </Link>
     </>
   );
 }

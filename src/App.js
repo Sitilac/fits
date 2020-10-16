@@ -19,6 +19,9 @@ import AddBottomPage from "./pages/Add/AddBottomPage/AddBottom";
 import AddShoePage from "./pages/Add/AddShoePage/AddShoe";
 import AddAccessoryPage from "./pages/Add/AddAccessoryPage/AddAccesory";
 import EditTopPage from "./pages/Edit/EditTopPage/EditTopPage"
+import EditShoePage from "./pages/Edit/EditShoePage/EditShoePage"
+import EditBottomPage from "./pages/Edit/EditBottomPage/EditBottomPage"
+import EditAccessoryPage from "./pages/Edit/EditAccessoryPage/EditAccessoryPage"
 import SignupPage from "./pages/userAuth/SignupPage";
 import userService from "./utils/userService";
 import LoginPage from "./pages/userAuth/LoginPage";
@@ -199,7 +202,7 @@ class App extends Component {
             {this.state.user ? (
               <>
                 <NavLink exact to="/fits">
-                  Outfits List
+                  Add Outfit
                 </NavLink>
                 &nbsp;&nbsp;&nbsp;
                 <NavLink exact to="/addTop">
@@ -268,6 +271,36 @@ class App extends Component {
               render={({ location }) => (
                 <EditTopPage
                   handleUpdateTop={this.handleUpdateTop}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/editShoe"
+              render={({ location }) => (
+                <EditShoePage
+                  handleUpdateShoe={this.handleUpdateShoe}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/editBottom"
+              render={({ location }) => (
+                <EditBottomPage
+                  handleUpdateBottom={this.handleUpdateBottom}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/editAccessory"
+              render={({ location }) => (
+                <EditAccessoryPage
+                  handleUpdateAccessory={this.handleUpdateAccessory}
                   location={location}
                 />
               )}

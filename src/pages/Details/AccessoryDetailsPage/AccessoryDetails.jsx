@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import AccessoryCard from '../../../components/AccessoryCard'
 
 function AccessoryDetailsPage(props){
@@ -17,6 +18,14 @@ function AccessoryDetailsPage(props){
       >
           DELETE
         </button>
+      <Link
+        className='btn btn-xs btn-warning'
+        to={{
+          pathname: '/editAccessory',
+          accessory: {accessory}
+        }}
+      >EDIT
+      </Link>
     </>
   );
 }
