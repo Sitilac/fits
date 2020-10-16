@@ -5,19 +5,24 @@ export function getAll(user) {
   .then(res => res.json());
 }
 
-export function create(pup) {
+export function getOne(shoe){
+  return fetch(`${BASE_URL}/${shoe}`)
+  .then(res => res.json());
+}
+
+export function create(shoe) {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {'content-type': 'application/json'},
-    body: JSON.stringify(pup)
+    body: JSON.stringify(shoe)
   }).then(res => res.json());
 }
 
-export function update(pup) {
-  return fetch(`${BASE_URL}/${pup._id}`, {
+export function update(shoe) {
+  return fetch(`${BASE_URL}/${shoe._id}`, {
     method: 'PUT',
     headers: {'content-type': 'application/json'},
-    body: JSON.stringify(pup)
+    body: JSON.stringify(shoe)
   }).then(res => res.json());
 }
 

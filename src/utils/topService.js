@@ -5,6 +5,10 @@ export function getAll(user) {
   .then(res => res.json());
 }
 
+export function getOne(top){
+  return fetch(`${BASE_URL}/${top}`)
+  .then(res => res.json());
+}
 
 export function create(top) {
   return fetch(BASE_URL, {

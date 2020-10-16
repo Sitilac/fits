@@ -5,6 +5,11 @@ export function getAll(user) {
   .then(res => res.json());
 }
 
+export function getOne(accessory){
+  return fetch(`${BASE_URL}/${accessory}`)
+  .then(res => res.json());
+}
+
 export function create(acc) {
   return fetch(BASE_URL, {
     method: 'POST',

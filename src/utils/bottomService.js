@@ -5,6 +5,11 @@ export function getAll(user) {
   .then(res => res.json());
 }
 
+export function getOne(bottom){
+  return fetch(`${BASE_URL}/${bottom}`)
+  .then(res => res.json());
+}
+
 export function create(bottom) {
   return fetch(BASE_URL, {
     method: 'POST',
@@ -13,11 +18,11 @@ export function create(bottom) {
   }).then(res => res.json());
 }
 
-export function update(pup) {
-  return fetch(`${BASE_URL}/${pup._id}`, {
+export function update(bottom) {
+  return fetch(`${BASE_URL}/${bottom._id}`, {
     method: 'PUT',
     headers: {'content-type': 'application/json'},
-    body: JSON.stringify(pup)
+    body: JSON.stringify(bottom)
   }).then(res => res.json());
 }
 

@@ -8,7 +8,11 @@ import * as bottomApi from "./utils/bottomService";
 import * as shoeApi from "./utils/shoeService";
 import * as accessoryApi from "./utils/accessorieService";
 import ShowAllOutfits from "./pages/ShowAllOutfits";
-import ShowAllTops from "./pages/ShowAllTops";
+import ShowAll from "./pages/ShowAll";
+import TopDetails from "./pages/Details/TopDetailsPage/TopDetails"
+import BottomDetails from "./pages/Details/BottomDetailsPage/BottomDetails"
+import AccessoryDetails from "./pages/Details/AccessoryDetailsPage/AccessoryDetails"
+import ShoeDetails from "./pages/Details/ShoeDetailsPage/ShoeDetails"
 import AddFitsPage from "./pages/Add/AddFitsPage"
 import AddTopPage from "./pages/Add/AddTopPage/AddTop";
 import AddBottomPage from "./pages/Add/AddBottomPage/AddBottom";
@@ -123,14 +127,42 @@ class App extends Component {
     await topApi.deleteOne(id);
     this.setState(
       (state) => ({
-        // Yay, filter returns a NEW array
         tops: state.tops.filter((p) => p._id !== id),
       }),
       () => this.props.history.push("/")
     );
   };
+  handleDeleteBottom = async (id) => {
+    await bottomApi.deleteOne(id);
+    this.setState(
+      (state) => ({
+        bottoms: state.bottoms.filter((p) => p._id !== id),
+      }),
+      () => this.props.history.push("/")
+    );
+  };
+  handleDeleteShoe = async (id) => {
+    await shoeApi.deleteOne(id);
+    this.setState(
+      (state) => ({
+        shoes: state.shoes.filter((p) => p._id !== id),
+      }),
+      () => this.props.history.push("/")
+    );
+  };
 
+  handleDeleteAccessory = async (id) => {
+    await accessoryApi.deleteOne(id);
+    this.setState(
+      (state) => ({
+        accessories: state.accessories.filter((p) => p._id !== id),
+      }),
+      () => this.props.history.push("/")
+    );
+  };
+  
 
+/*---State---*/
   async componentDidMount(){
     const user = userService.getUser();
     const tops = await topApi.getAll(user);
@@ -144,6 +176,7 @@ class App extends Component {
     this.setState({accessories});
     this.setState({shoes});
   }
+ 
   /*--- User Auth ---*/
   handleSignupOrLogin = () => {
     this.setState({
@@ -181,7 +214,7 @@ class App extends Component {
                 </NavLink>
                 &nbsp;&nbsp;&nbsp;
                 <NavLink exact to="/addAccessory">
-                  Add Add Accessory
+                  Add Accessory
                 </NavLink>
                 &nbsp;&nbsp;&nbsp;
                 <Link to="" onClick={this.handleLogout}>
@@ -203,35 +236,21 @@ class App extends Component {
           </nav>
         </header>
         <main>
-        {/* <select key="Ley"
-          value={this.state.tops}
-          onChange={e =>
-            this.setState({
-              selectedTop: e.target.value,
-            })
-          }
-        >
-          {this.state.tops.map(top => (
-            <option
-              key={top.id}
-              value={top._id}
-            >
-              {top.name}
-            </option>
-          ))}
-        </select> */}
           <Switch>
-          {/* <Route
-              exact
-              path="/"
-              render={() => (
-                <Outfit
-                  user={this.state.user}
-                  puppies={this.state.puppies}
-                  handleDeletePuppy={this.handleDeletePuppy}
-                />
-              )}
-            /> */}
+            <Route exact path="/" render={() => <ShowAll 
+              tops={this.state.tops} 
+              bottoms ={this.state.bottoms} 
+              shoes = {this.state.shoes} 
+              accessories = {this.state.accessories}
+              getTop={topApi.getOne}
+              getBottom={bottomApi.getOne}
+              getAccessory={accessoryApi.getOne}
+              getShoe={shoeApi.getOne}
+             />} />
+            <Route exact path="/bottom/details" render={({location}) => <BottomDetails handleDeleteBottom={this.handleDeleteBottom} location ={location}/>}/>
+            <Route exact path="/shoe/details" render={({location}) => <ShoeDetails handleDeleteShoe={this.handleDeleteShoe} location ={location}/>}/>
+            <Route exact path="/accessory/details" render={({location}) => <AccessoryDetails handleDeleteAccessory={this.handleDeleteAccessory} location ={location}/>}/>
+            <Route exact path="/top/details" render={({location}) => <TopDetails handleDeleteTop = {this.handleDeleteTop} location ={location}/>}/>
             <Route exact path="/fits" render={() => <AddFitsPage user={userService.getUser()} 
               handleAddFit={this.handleAddFit} 
               tops={this.state.tops} 
