@@ -7,7 +7,6 @@ function BottomDetailsPage(props){
   //this.getOne()
   return(
     <>
-    <h1>Hi</h1>
       <BottomCard
         key={bottom._id}
         bottom={bottom}

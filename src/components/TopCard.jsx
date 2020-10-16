@@ -13,7 +13,6 @@ function TopCard({top}) {
           <dd>{top.name}</dd>
           <dt>Price</dt>
           <dd>{top.price}</dd>
-
         </dl>
       </div>
       <div className='panel-footer'>

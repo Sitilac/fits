@@ -18,6 +18,7 @@ import AddTopPage from "./pages/Add/AddTopPage/AddTop";
 import AddBottomPage from "./pages/Add/AddBottomPage/AddBottom";
 import AddShoePage from "./pages/Add/AddShoePage/AddShoe";
 import AddAccessoryPage from "./pages/Add/AddAccessoryPage/AddAccesory";
+import EditTopPage from "./pages/Edit/EditTopPage/EditTopPage"
 import SignupPage from "./pages/userAuth/SignupPage";
 import userService from "./utils/userService";
 import LoginPage from "./pages/userAuth/LoginPage";
@@ -164,18 +165,18 @@ class App extends Component {
 
 /*---State---*/
   async componentDidMount(){
-    const user = userService.getUser();
-    const tops = await topApi.getAll(user);
-    const shoes = await shoeApi.getAll(user);
-    const bottoms = await bottomApi.getAll(user);
-    const accessories = await accessoryApi.getAll(user);
-    const fits = await fitApi.getAll(user);
-    this.setState({fits});
-    this.setState({tops});
-    this.setState({bottoms});
-    this.setState({accessories});
-    this.setState({shoes});
-  }
+      const user = userService.getUser();
+      const tops = await topApi.getAll(user);
+      const shoes = await shoeApi.getAll(user);
+      const bottoms = await bottomApi.getAll(user);
+      const accessories = await accessoryApi.getAll(user);
+      const fits = await fitApi.getAll(user);
+      this.setState({fits});
+      this.setState({tops});
+      this.setState({bottoms});
+      this.setState({accessories});
+      this.setState({shoes});
+    }
  
   /*--- User Auth ---*/
   handleSignupOrLogin = () => {
@@ -261,6 +262,16 @@ class App extends Component {
             <Route exact path="/addBottom" render={() => <AddBottomPage user={userService.getUser()} handleAddBottom ={this.handleAddBottom}/>} />
             <Route exact path="/addShoe" render={() => <AddShoePage user={userService.getUser()} handleAddShoe ={this.handleAddShoe}/>} />
             <Route exact path="/addAccessory" render={() => <AddAccessoryPage user={userService.getUser()} handleAddAccessory ={this.handleAddAccessory}/>} />
+            <Route
+              exact
+              path="/editTop"
+              render={({ location }) => (
+                <EditTopPage
+                  handleUpdateTop={this.handleUpdateTop}
+                  location={location}
+                />
+              )}
+            />
 
             <Route
               exact

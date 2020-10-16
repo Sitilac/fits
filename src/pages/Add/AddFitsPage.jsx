@@ -83,7 +83,7 @@ class AddFitPage extends Component {
         <br/>
   <label>Accessory</label>
     <select
-         name="accessory"
+         name="accessories"
          value={this.state.formData.accessories}
          onChange={this.handleChange}
         >

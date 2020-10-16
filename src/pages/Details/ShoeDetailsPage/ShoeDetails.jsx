@@ -7,7 +7,6 @@ function ShoeDetailsPage(props){
   //this.getOne()
   return(
     <>
-    <h1>Hi</h1>
       <ShoeCard
         key={shoe._id}
         shoe={shoe}

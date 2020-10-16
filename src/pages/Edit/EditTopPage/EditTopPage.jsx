@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 class EditTopPage extends Component {
   state = {
     invalidForm: false,
-    formData: this.props.location.state.top
+    formData: this.props.location.tops.top
   };
 
   formRef = React.createRef();
