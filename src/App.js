@@ -7,6 +7,7 @@ import * as topApi from "./utils/topService";
 import * as bottomApi from "./utils/bottomService";
 import * as shoeApi from "./utils/shoeService";
 import * as accessoryApi from "./utils/accessorieService";
+import Dropdown from 'react-overlays/Dropdown';
 import OutfitListPage from "./pages/OutfitList/ShowAllOutfits"
 import ShowAll from "./pages/ShowAll";
 import TopDetails from "./pages/Details/TopDetailsPage/TopDetails"
@@ -194,13 +195,12 @@ class App extends Component {
 
 /*---State---*/
   async componentDidMount(){
-      const user = userService.getUser();
-      // const promises = 
-      await Promise.all([topApi.getAll(user),
-        shoeApi.getAll(user),
-        bottomApi.getAll(user),
-        accessoryApi.getAll(user),
-        fitApi.getAll(user)]).then((results) =>{
+    if(this.state.user != null){
+      await Promise.all([topApi.getAll(this.state.user),
+        shoeApi.getAll(this.state.user),
+        bottomApi.getAll(this.state.user),
+        accessoryApi.getAll(this.state.user),
+        fitApi.getAll(this.state.user)]).then((results) =>{
           this.setState({
             tops: results[0],
             bottoms: results[2],
@@ -209,7 +209,10 @@ class App extends Component {
             fits: results[4]
           })
         })
+      }
   }
+  
+  
  
   /*--- User Auth ---*/
   handleSignupOrLogin = () => {
@@ -274,6 +277,7 @@ class App extends Component {
         </header>
         <main>
           <Switch>
+          {this.state.user ? (
             <Route exact path="/" render={() => <ShowAll 
               tops={this.state.tops} 
               bottoms ={this.state.bottoms} 
@@ -284,6 +288,9 @@ class App extends Component {
               getAccessory={accessoryApi.getOne}
               getShoe={shoeApi.getOne}
              />} />
+             ):(
+            <Route exact path="/"><h1>Welcome to Fits</h1></Route>
+             )}
             <Route exact path="/fitslist" render={() =>
               <OutfitListPage
                 user={this.state.user}
