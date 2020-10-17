@@ -11,7 +11,7 @@ class EditTopPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleUpdateTop(this.state.formData);
+    this.props.handleUpdateAccessory(this.state.formData);
   };
 
   handleChange = e => {
@@ -25,7 +25,7 @@ class EditTopPage extends Component {
   render() {
     return (
       <>
-        <h1>Edit Shoe</h1>
+        <h1>Edit Accessory</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
         <div className="form-group">
             <label>Name(required)</label>
@@ -79,7 +79,7 @@ class EditTopPage extends Component {
             className="btn btn-xs"
             disabled={this.state.invalidForm}
           >
-            SAVE TOP
+            SAVE ACCESSORY
           </button>&nbsp;&nbsp;
           <Link to='/'>CANCEL</Link>
         </form>

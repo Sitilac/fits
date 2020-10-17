@@ -11,7 +11,7 @@ class EditTopPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleUpdateTop(this.state.formData);
+    this.props.handleUpdateShoe(this.state.formData);
   };
 
   handleChange = e => {

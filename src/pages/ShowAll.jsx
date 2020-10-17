@@ -4,17 +4,17 @@ const styles ={display:'flex', width:'100vw'}
 
 class ShowAll extends Component{
   state ={
-    tops:{},
-    bottoms:{},
-    shoes:{},
-    accessories:{}
-
+    tops:'',
+    bottoms:'',
+    shoes:'',
+    accessories:'',
+    count: 0,
   }
 
   handleTopChange = e => {
     let tops = this.props.getTop(e.target.value);
     tops.then((result) =>{ 
-       console.log(result)
+
        this.setState({
          tops:result
        })
@@ -23,7 +23,7 @@ class ShowAll extends Component{
   handleBottomChange = e => {
     let bottoms = this.props.getBottom(e.target.value);
     bottoms.then((result) =>{ 
-       console.log(result)
+
        this.setState({
          bottoms:result
        })
@@ -32,7 +32,7 @@ class ShowAll extends Component{
   handleShoeChange = e => {
     let shoe = this.props.getShoe(e.target.value);
     shoe.then((result) =>{ 
-       console.log(result)
+
        this.setState({
          shoes:result
        })
@@ -41,12 +41,13 @@ class ShowAll extends Component{
   handleAccessoryChange = e => {
     let accessory = this.props.getAccessory(e.target.value);
     accessory.then((result) =>{ 
-       console.log(result)
+
        this.setState({
          accessories:result
        })
     })
   };
+
   
   
   render() {

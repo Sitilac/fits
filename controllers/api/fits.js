@@ -9,8 +9,9 @@ module.exports = {
 }
 
 async function index(req,res){
-  const fits = await Fit.find({user:req.params.id});
-  res.status(200).json(fits);
+  const fits = await Fit.find({user:req.params.id}).populate("top bottom shoes accessory").exec(function(err,fit){
+    res.status(200).json(fit);
+  })  
 }
 async function show(req,res){
   res.render()
@@ -20,8 +21,10 @@ async function create(req,res){
   res.status(200).json(fits);
 }
 async function deleteOne(req,res){
-  res.render()
+  const deletedFits = await Fit.findByIdAndRemove(req.params.id);
+  res.status(200).json(deletedFits);
 }
 async function update(req,res){
-  res.render()
+  const updatedFit = await Fit.findByIdAndUpdate(req.params.id, req.body, {new: true});
+  res.status(200).json(updatedFit);
 }

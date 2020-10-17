@@ -1,30 +1,23 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-class AddFitPage extends Component {
+class EditFitPage extends Component {
   state = {
-    count:0,
-    invalidForm: true,
-    formData: {
-      name:'',
-      top: '',
-      bottom: '',
-      shoes: '',
-      accessory:'',
-      user:this.props.user,
-    }
+    invalidForm: false,
+    formData: this.props.location.state.fit
   };
 
   formRef = React.createRef();
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleAddFit(this.state.formData);
+    this.props.handleUpdateFit(this.state.formData);
   };
 
   handleChange = e => {
     const formData = {...this.state.formData, [e.target.name]: e.target.value};
     this.setState({
-      formData
+      formData,
     });
   };
 
@@ -33,7 +26,7 @@ class AddFitPage extends Component {
     return (
       <>
       <label>Name</label>
-      <input name="name" type="text" onChange={this.handleChange}></input>
+      <input name="name" type="text" value={this.state.formData.name} onChange={this.handleChange}></input>
       <br/>
   <label>Top</label>
     <select
@@ -102,7 +95,7 @@ class AddFitPage extends Component {
          onClick= {this.handleSubmit}
          className="btn"
        >
-         ADD Outfit
+         Save Outfit
        </button>
       </>
   );
@@ -110,4 +103,4 @@ class AddFitPage extends Component {
   }
 }
 
-export default AddFitPage;
+export default EditFitPage;

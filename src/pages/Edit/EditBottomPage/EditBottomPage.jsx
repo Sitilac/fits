@@ -11,7 +11,7 @@ class EditTopPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.handleUpdateTop(this.state.formData);
+    this.props.handleUpdateBottom(this.state.formData);
   };
 
   handleChange = e => {
@@ -79,7 +79,7 @@ class EditTopPage extends Component {
             className="btn btn-xs"
             disabled={this.state.invalidForm}
           >
-            SAVE TOP
+            SAVE BOTTOM
           </button>&nbsp;&nbsp;
           <Link to='/'>CANCEL</Link>
         </form>
