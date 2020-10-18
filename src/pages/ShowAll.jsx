@@ -70,7 +70,7 @@ class ShowAll extends Component {
     return (
       <>
         <div class="showAll" style="padding-left:100px" style={styles}>
-          <label>Top</label>
+          <label>Tops</label>
           <select
             name="top"
             defaultValue={this.props.tops[3]}
@@ -83,7 +83,7 @@ class ShowAll extends Component {
             ))}
           </select>
           <Link
-            className="btn btn-xs btn-info"
+            className="btn btn-xs btn-info btnDetails"
             to={{
               pathname: "/top/details",
               state: { tops: this.state.tops },
@@ -92,10 +92,9 @@ class ShowAll extends Component {
             details{" "}
           </Link>
           &nbsp;&nbsp;&nbsp;
-          <label>Bottom</label>
+          <label>Bottoms</label>
           <select
             name="bottom"
-            //value={this.state.formData.bottoms}
             onChange={this.handleBottomChange}
           >
             {this.props.bottoms.map((bottom) => (
@@ -105,7 +104,7 @@ class ShowAll extends Component {
             ))}
           </select>
           <Link
-            className="btn btn-xs btn-info"
+            className="btn btn-xs btn-info btnDetails"
             to={{
               pathname: "/bottom/details",
               state: { bottoms: this.state.bottoms },
@@ -117,7 +116,6 @@ class ShowAll extends Component {
           <label>Shoes</label>
           <select
             name="shoes"
-            //value={this.state.formData.shoes}
             onChange={this.handleShoeChange}
           >
             {this.props.shoes.map((shoe) => (
@@ -127,7 +125,7 @@ class ShowAll extends Component {
             ))}
           </select>
           <Link
-            className="btn btn-xs btn-info"
+            className="btn btn-xs btn-info btnDetails"
             to={{
               pathname: "/shoe/details",
               state: { shoes: this.state.shoes },
@@ -136,10 +134,9 @@ class ShowAll extends Component {
             details{" "}
           </Link>
           &nbsp;&nbsp;&nbsp;
-          <label>Accessory</label>
+          <label>accessories</label>
           <select
             name="accessory"
-            //  value={this.state.formData.accessories}
             onChange={this.handleAccessoryChange}
           >
             {this.props.accessories.map((accessory) => (
@@ -149,7 +146,7 @@ class ShowAll extends Component {
             ))}
           </select>
           <Link
-            className="btn btn-xs btn-info"
+            className="btn btn-xs btn-info btnDetails"
             to={{
               pathname: "/accessory/details",
               state: { accessories: this.state.accessories },

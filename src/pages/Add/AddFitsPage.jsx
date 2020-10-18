@@ -19,6 +19,7 @@ class AddFitPage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleAddFit(this.state.formData);
+    window.location.reload(false);
   };
 
   handleChange = (e) => {
@@ -39,7 +40,7 @@ class AddFitPage extends Component {
         formData: {
           top: this.props.tops[0],
           bottom: this.props.bottoms[0],
-          shoe: this.props.shoes[0],
+          shoes: this.props.shoes[0],
           accessory: this.props.accessories[0],
           user: this.props.user,
         },
@@ -53,7 +54,7 @@ class AddFitPage extends Component {
         formData: {
           top: this.props.tops[0],
           bottom: this.props.bottoms[0],
-          shoe: this.props.shoes[0],
+          shoes: this.props.shoes[0],
           accessory: this.props.accessories[0],
           user: this.props.user,
         },
@@ -126,7 +127,7 @@ class AddFitPage extends Component {
             </option>
           ))}
         </select>
-        <button onClick={this.handleSubmit} className="btn">
+        <button onClick={this.handleSubmit} className="btn-xs">
           ADD Outfit
         </button>
         </div>
