@@ -69,7 +69,7 @@ class ShowAll extends Component {
   render() {
     return (
       <>
-        <div class="showAll" style={styles}>
+        <div class="showAll" style="padding-left:100px" style={styles}>
           <label>Top</label>
           <select
             name="top"

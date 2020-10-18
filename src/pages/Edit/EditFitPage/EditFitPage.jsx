@@ -25,35 +25,6 @@ class EditFitPage extends Component {
       formData,
     });
   };
-
-  componentDidUpdate() {
-    // if (this.state.formData.top === "") {
-    //   console.log(this.props.tops);
-    //   this.setState({
-    //     formData: {
-    //       top: this.props.tops[0],
-    //       bottom: this.props.bottoms[0],
-    //       shoe: this.props.shoes[0],
-    //       accessory: this.props.accessories[0],
-    //       user: this.props.user,
-    //     },
-    //   });
-    // }
-  }
-  
-  componentDidMount() {
-    // if (this.state.formData.top === "" && this.props.tops[0]) {
-    //   this.setState({
-    //     formData: {
-    //       top: this.props.tops[0],
-    //       bottom: this.props.bottoms[0],
-    //       shoe: this.props.shoes[0],
-    //       accessory: this.props.accessories[0],
-    //       user: this.props.user,
-    //     },
-    //   });
-    // }
-  }
   
 
   render() {

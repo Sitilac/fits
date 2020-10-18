@@ -4,12 +4,13 @@ import OutfitListItem from './OutfitListItem'
 function ShowAllOutfits(props){
   return (
     <>
+    <div className="mainstyling">
       {!props.user ? (
         <></>
       ) : (
         <>
         <h1>Outfit List</h1>
-        <div className='PuppyListPage-grid'>
+        <div className='ListPage'>
           {props.fits.map(fit => 
             <OutfitListItem
               fit={fit}
@@ -20,6 +21,7 @@ function ShowAllOutfits(props){
         </div>
         </>
       )}
+      </div>
     </>
   );
 }

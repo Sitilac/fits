@@ -22,7 +22,7 @@ class AddFitPage extends Component {
   };
 
   handleChange = (e) => {
-    console.log("Entered")
+    console.log("Entered");
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value,
@@ -32,40 +32,47 @@ class AddFitPage extends Component {
     });
   };
 
-  componentDidUpdate(){
-    if(this.state.formData.top === "" ){
-      console.log(this.props.tops)
+  componentDidUpdate() {
+    if (this.state.formData.top === "") {
+      console.log(this.props.tops);
       this.setState({
-        formData:{
-          top:this.props.tops[0],
+        formData: {
+          top: this.props.tops[0],
           bottom: this.props.bottoms[0],
           shoe: this.props.shoes[0],
-          accessory:this.props.accessories[0],
+          accessory: this.props.accessories[0],
           user: this.props.user,
-        }
-      })
+        },
+      });
     }
   }
-  componentDidMount(){
-    if(this.state.formData.top === "" && this.props.tops[0]){
+
+  componentDidMount() {
+    if (this.state.formData.top === "" && this.props.tops[0]) {
       this.setState({
-        formData:{
-          top:this.props.tops[0],
+        formData: {
+          top: this.props.tops[0],
           bottom: this.props.bottoms[0],
           shoe: this.props.shoes[0],
-          accessory:this.props.accessories[0],
-          user: this.props.user
-        }
-      })
+          accessory: this.props.accessories[0],
+          user: this.props.user,
+        },
+      });
     }
   }
 
   render() {
     return (
       <>
-      <h2>ADD FIT</h2>
+      <div className="mainstyling">
+        <h2>ADD FIT</h2>
         <label>Name</label>
-        <input name="name" type="text" onChange={this.handleChange} required></input>
+        <input
+          name="name"
+          type="text"
+          onChange={this.handleChange}
+          required
+        ></input>
         <br />
         <label>Top</label>
         <select
@@ -122,6 +129,7 @@ class AddFitPage extends Component {
         <button onClick={this.handleSubmit} className="btn">
           ADD Outfit
         </button>
+        </div>
       </>
     );
   }

@@ -25,6 +25,7 @@ class EditTopPage extends Component {
   render() {
     return (
       <>
+      <div className="mainstyling">
         <h1>Edit Accessory</h1>
         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -83,6 +84,7 @@ class EditTopPage extends Component {
           </button>&nbsp;&nbsp;
           <Link to='/'>CANCEL</Link>
         </form>
+        </div>
       </>
     );
   }

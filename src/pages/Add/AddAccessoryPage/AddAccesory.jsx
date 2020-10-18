@@ -32,6 +32,8 @@ class AddAccesoriePage extends Component {
   render() {
     return (
       <>
+      <div className="mainstyling">
+      <h2>ADD ACCESSORY</h2>
       <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Name(required)</label>
@@ -88,6 +90,7 @@ class AddAccesoriePage extends Component {
             ADD ACCESSORY
           </button>
         </form>
+        </div>
       </>
     );
   }

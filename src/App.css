@@ -70,7 +70,7 @@ nav{
   display: flex;
 }
 
-main{
+.mainstyling{
   display: grid;
   align-items: center;
   justify-content: right;

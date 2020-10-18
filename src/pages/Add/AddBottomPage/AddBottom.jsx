@@ -32,6 +32,8 @@ class AddBottomPage extends Component {
   render() {
     return (
       <>
+      <div className="mainstyling">
+      <h2>ADD BOTTOM</h2>
       <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Name(required)</label>
@@ -88,6 +90,7 @@ class AddBottomPage extends Component {
             ADD BOTTOM
           </button>
         </form>
+        </div>
       </>
     );
   }
