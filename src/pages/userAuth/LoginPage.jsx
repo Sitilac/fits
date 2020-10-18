@@ -21,6 +21,7 @@ class LoginPage extends Component {
 
       this.props.handleSignupOrLogin();
       this.props.history.push("/");
+      window.location.reload(false);
     } catch (err) {
       this.updateMessage(err.message);
     }
