@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class AddFitPage extends Component {
   state = {
     count: 0,
-    invalidForm: true,
+    invalidForm: false,
     formData: {
       name: "",
       top: "",
@@ -17,12 +17,12 @@ class AddFitPage extends Component {
   formRef = React.createRef();
 
   handleSubmit = (e) => {
-    console.log(this.state.formData);
     e.preventDefault();
     this.props.handleAddFit(this.state.formData);
   };
 
   handleChange = (e) => {
+    console.log("Entered")
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value,
@@ -64,13 +64,14 @@ class AddFitPage extends Component {
     return (
       <>
         <label>Name</label>
-        <input name="name" type="text" onChange={this.handleChange}></input>
+        <input name="name" type="text" onChange={this.handleChange} required></input>
         <br />
         <label>Top</label>
         <select
           name="top"
           value={this.state.formData.tops}
           onChange={this.handleChange}
+          required={true}
         >
           {this.props.tops.map((top) => (
             <option key={top._id} value={top._id}>

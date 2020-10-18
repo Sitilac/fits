@@ -9,6 +9,8 @@ class AddTopPage extends Component {
       price: '0',
       color: '',
       description:'',
+      timesWorn:0,
+      lastTimeWorn: new Date(),
       user:this.props.user,
     }
   };

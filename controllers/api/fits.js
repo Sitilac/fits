@@ -25,6 +25,7 @@ async function deleteOne(req,res){
   res.status(200).json(deletedFits);
 }
 async function update(req,res){
-  const updatedFit = await Fit.findByIdAndUpdate(req.params.id, req.body, {new: true});
-  res.status(200).json(updatedFit);
+  const updatedFit = await Fit.findByIdAndUpdate(req.params.id, req.body, {new: true}).populate("top bottom shoes accessory").exec(function(err,fit){
+    res.status(200).json(fit);
+  })
 }

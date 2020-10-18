@@ -69,7 +69,6 @@ class ShowAll extends Component {
   render() {
     return (
       <>
-      {console.log(this.props.tops)}
         <div style={styles}>
           <label>Top</label>
           <select

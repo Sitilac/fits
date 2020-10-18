@@ -9,6 +9,7 @@ class AddAccesoriePage extends Component {
       price: '0',
       color: '',
       description:'',
+      timesWorn:0,
       user:this.props.user,
     }
   };

@@ -1,45 +1,50 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 import { Route, Link, NavLink, Switch } from "react-router-dom";
 import "./App.css";
-import * as fitApi from "./utils/fitService"
+import * as fitApi from "./utils/fitService";
 import * as topApi from "./utils/topService";
 import * as bottomApi from "./utils/bottomService";
 import * as shoeApi from "./utils/shoeService";
 import * as accessoryApi from "./utils/accessorieService";
-import Dropdown from 'react-overlays/Dropdown';
-import OutfitListPage from "./pages/OutfitList/ShowAllOutfits"
+import OutfitListPage from "./pages/OutfitList/ShowAllOutfits";
+import {
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+} from "mdbreact";
 import ShowAll from "./pages/ShowAll";
-import TopDetails from "./pages/Details/TopDetailsPage/TopDetails"
-import BottomDetails from "./pages/Details/BottomDetailsPage/BottomDetails"
-import AccessoryDetails from "./pages/Details/AccessoryDetailsPage/AccessoryDetails"
-import ShoeDetails from "./pages/Details/ShoeDetailsPage/ShoeDetails"
-import FitDetails from "./pages/Details/FitDetailspage/FitDetailsPage"
-import AddFitsPage from "./pages/Add/AddFitsPage"
+import TopDetails from "./pages/Details/TopDetailsPage/TopDetails";
+import BottomDetails from "./pages/Details/BottomDetailsPage/BottomDetails";
+import AccessoryDetails from "./pages/Details/AccessoryDetailsPage/AccessoryDetails";
+import ShoeDetails from "./pages/Details/ShoeDetailsPage/ShoeDetails";
+import FitDetails from "./pages/Details/FitDetailspage/FitDetailsPage";
+import AddFitsPage from "./pages/Add/AddFitsPage";
 import AddTopPage from "./pages/Add/AddTopPage/AddTop";
 import AddBottomPage from "./pages/Add/AddBottomPage/AddBottom";
 import AddShoePage from "./pages/Add/AddShoePage/AddShoe";
 import AddAccessoryPage from "./pages/Add/AddAccessoryPage/AddAccesory";
-import EditTopPage from "./pages/Edit/EditTopPage/EditTopPage"
-import EditShoePage from "./pages/Edit/EditShoePage/EditShoePage"
-import EditBottomPage from "./pages/Edit/EditBottomPage/EditBottomPage"
-import EditAccessoryPage from "./pages/Edit/EditAccessoryPage/EditAccessoryPage"
-import EditFitPage from "./pages/Edit/EditFitPage/EditFitPage"
+import EditTopPage from "./pages/Edit/EditTopPage/EditTopPage";
+import EditShoePage from "./pages/Edit/EditShoePage/EditShoePage";
+import EditBottomPage from "./pages/Edit/EditBottomPage/EditBottomPage";
+import EditAccessoryPage from "./pages/Edit/EditAccessoryPage/EditAccessoryPage";
+import EditFitPage from "./pages/Edit/EditFitPage/EditFitPage";
 import SignupPage from "./pages/userAuth/SignupPage";
 import userService from "./utils/userService";
 import LoginPage from "./pages/userAuth/LoginPage";
 
 class App extends Component {
   state = {
-    fits:[],
-    tops:[],
-    bottoms:[],
-    shoes:[],
-    accessories:[],
-    selectedTop:'',
+    fits: [],
+    tops: [],
+    bottoms: [],
+    shoes: [],
+    accessories: [],
+    selectedTop: "",
     user: userService.getUser(),
+    dropDownOpen: false,
   };
-
 
   /*---Crud Add Handlers---*/
   handleAddFit = async (newFitData) => {
@@ -94,19 +99,15 @@ class App extends Component {
     const newTopArray = this.state.tops.map((p) =>
       p._id === updatedTop._id ? updatedTop : p
     );
-    this.setState(
-      { top:newTopArray },
-      () => this.props.history.push("/")
-    );
+    this.setState({ top: newTopArray }, () => this.props.history.push("/"));
   };
   handleUpdateBottom = async (updatedBottomData) => {
     const updatedBottom = await bottomApi.update(updatedBottomData);
     const newBottomArray = this.state.bottoms.map((p) =>
       p._id === updatedBottom._id ? updatedBottom : p
     );
-    this.setState(
-      { bottoms:newBottomArray },
-      () => this.props.history.push("/")
+    this.setState({ bottoms: newBottomArray }, () =>
+      this.props.history.push("/")
     );
   };
   handleUpdateShoe = async (updatedShoeData) => {
@@ -114,34 +115,26 @@ class App extends Component {
     const newShoeArray = this.state.shoe.map((p) =>
       p._id === updatedShoe._id ? updatedShoe : p
     );
-    this.setState(
-      { shoes:newShoeArray },
-      () => this.props.history.push("/")
-    );
+    this.setState({ shoes: newShoeArray }, () => this.props.history.push("/"));
   };
   handleUpdateAccessory = async (updatedAccessorieData) => {
     const updatedAccessorie = await accessoryApi.update(updatedAccessorieData);
     const newAccessorieArray = this.state.accessories.map((p) =>
       p._id === updatedAccessorie._id ? updatedAccessorie : p
     );
-    this.setState(
-      { accessories:newAccessorieArray },
-      () => this.props.history.push("/")
+    this.setState({ accessories: newAccessorieArray }, () =>
+      this.props.history.push("/")
     );
   };
 
   handleUpdateFit = async (updatedFitData) => {
-    console.log("Called")
+    console.log("Called");
     const updatedFit = await fitApi.update(updatedFitData);
     const newFitArray = this.state.fits.map((p) =>
       p._id === updatedFit._id ? updatedFit : p
     );
-    this.setState(
-      { fits: newFitArray },
-      () => this.props.history.push("/")
-    );
+    this.setState({ fits: newFitArray }, () => this.props.history.push("/"));
   };
-
 
   /*---Crud Delete handlers---*/
   handleDeleteTop = async (id) => {
@@ -191,29 +184,28 @@ class App extends Component {
       () => this.props.history.push("/")
     );
   };
-  
 
-/*---State---*/
-  async componentDidMount(){
-    if(this.state.user != null){
-      await Promise.all([topApi.getAll(this.state.user),
+  /*---State---*/
+  async componentDidMount() {
+    if (this.state.user != null) {
+      await Promise.all([
+        topApi.getAll(this.state.user),
         shoeApi.getAll(this.state.user),
         bottomApi.getAll(this.state.user),
         accessoryApi.getAll(this.state.user),
-        fitApi.getAll(this.state.user)]).then((results) =>{
-          this.setState({
-            tops: results[0],
-            bottoms: results[2],
-            shoes: results[1],
-            accessories: results[3],
-            fits: results[4]
-          })
-        })
-      }
+        fitApi.getAll(this.state.user),
+      ]).then((results) => {
+        this.setState({
+          tops: results[0],
+          bottoms: results[2],
+          shoes: results[1],
+          accessories: results[3],
+          fits: results[4],
+        });
+      });
+    }
   }
-  
-  
- 
+
   /*--- User Auth ---*/
   handleSignupOrLogin = () => {
     this.setState({
@@ -234,30 +226,50 @@ class App extends Component {
           <nav>
             {this.state.user ? (
               <>
-                <NavLink exact to="/fitslist">
-                  Outfit List
-                </NavLink>
-                <NavLink exact to="/fits">
-                  Add Outfit
-                </NavLink>
+                <MDBDropdown>
+                  <MDBDropdownToggle caret color="primary">
+                    Show
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <NavLink exact to="/fitslist">
+                      <div class="dropdown-item">
+                        <MDBDropdownItem class="test">
+                          Outfit List
+                        </MDBDropdownItem>
+                      </div>
+                    </NavLink>
+                    <NavLink exact to="/">
+                      <MDBDropdownItem>Show All Pieces</MDBDropdownItem>
+                    </NavLink>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
+                <MDBDropdown>
+                  <MDBDropdownToggle caret color="primary">
+                    Add New
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <NavLink exact to="/fits">
+                      <MDBDropdownItem>Add Outfit</MDBDropdownItem>
+                    </NavLink>
+                    <NavLink exact to="/addTop">
+                      <MDBDropdownItem>Add Top</MDBDropdownItem>
+                    </NavLink>
+
+                    <NavLink exact to="/addBottom">
+                      <MDBDropdownItem>Add Bottom</MDBDropdownItem>
+                    </NavLink>
+
+                    <NavLink exact to="/addShoe">
+                      <MDBDropdownItem>Add Shoe</MDBDropdownItem>
+                    </NavLink>
+
+                    <NavLink exact to="/addAccessory">
+                      <MDBDropdownItem>Add Accessory</MDBDropdownItem>
+                    </NavLink>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
                 &nbsp;&nbsp;&nbsp;
-                <NavLink exact to="/addTop">
-                  Add Top
-                </NavLink>
-                &nbsp;&nbsp;&nbsp;
-                <NavLink exact to="/addBottom">
-                  Add Bottom
-                </NavLink>
-                &nbsp;&nbsp;&nbsp;
-                <NavLink exact to="/addShoe">
-                  Add Shoe
-                </NavLink>
-                &nbsp;&nbsp;&nbsp;
-                <NavLink exact to="/addAccessory">
-                  Add Accessory
-                </NavLink>
-                &nbsp;&nbsp;&nbsp;
-                <Link to="" onClick={this.handleLogout}>
+                <Link class="btn btn-primary" to="" onClick={this.handleLogout}>
                   LOG OUT
                 </Link>
                 &nbsp;&nbsp;&nbsp;
@@ -277,42 +289,138 @@ class App extends Component {
         </header>
         <main>
           <Switch>
-          {this.state.user ? (
-            <Route exact path="/" render={() => <ShowAll 
-              tops={this.state.tops} 
-              bottoms ={this.state.bottoms} 
-              shoes = {this.state.shoes} 
-              accessories = {this.state.accessories}
-              getTop={topApi.getOne}
-              getBottom={bottomApi.getOne}
-              getAccessory={accessoryApi.getOne}
-              getShoe={shoeApi.getOne}
-             />} />
-             ):(
-            <Route exact path="/"><h1>Welcome to Fits</h1></Route>
-             )}
-            <Route exact path="/fitslist" render={() =>
-              <OutfitListPage
-                user={this.state.user}
-                fits={this.state.fits}
-                handleDeleteFit={this.handleDeleteFit}
+            {this.state.user ? (
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <ShowAll
+                    tops={this.state.tops}
+                    bottoms={this.state.bottoms}
+                    shoes={this.state.shoes}
+                    accessories={this.state.accessories}
+                    getTop={topApi.getOne}
+                    getBottom={bottomApi.getOne}
+                    getAccessory={accessoryApi.getOne}
+                    getShoe={shoeApi.getOne}
+                  />
+                )}
               />
-            } />
-            <Route exact path="/bottom/details" render={({location}) => <BottomDetails handleDeleteBottom={this.handleDeleteBottom} location ={location}/>}/>
-            <Route exact path="/shoe/details" render={({location}) => <ShoeDetails handleDeleteShoe={this.handleDeleteShoe} location ={location}/>}/>
-            <Route exact path="/accessory/details" render={({location}) => <AccessoryDetails handleDeleteAccessory={this.handleDeleteAccessory} location ={location}/>}/>
-            <Route exact path="/top/details" render={({location}) => <TopDetails handleDeleteTop = {this.handleDeleteTop} location ={location}/>}/>
-            <Route exact path="/fit/details" render={(location) => <FitDetails location={location}/>}></Route>
-            <Route exact path="/fits" render={() => <AddFitsPage user={userService.getUser()} 
-              handleAddFit={this.handleAddFit} 
-              tops={this.state.tops} 
-              bottoms ={this.state.bottoms} 
-              shoes = {this.state.shoes} 
-              accessories = {this.state.accessories}/>} />
-            <Route exact path="/addTop" render={() => <AddTopPage user={userService.getUser()} handleAddTop ={this.handleAddTop}/>} />
-            <Route exact path="/addBottom" render={() => <AddBottomPage user={userService.getUser()} handleAddBottom ={this.handleAddBottom}/>} />
-            <Route exact path="/addShoe" render={() => <AddShoePage user={userService.getUser()} handleAddShoe ={this.handleAddShoe}/>} />
-            <Route exact path="/addAccessory" render={() => <AddAccessoryPage user={userService.getUser()} handleAddAccessory ={this.handleAddAccessory}/>} />
+            ) : (
+              <Route exact path="/">
+                <h1>Welcome to Fits</h1>
+              </Route>
+            )}
+            <Route
+              exact
+              path="/fitslist"
+              render={() => (
+                <OutfitListPage
+                  user={this.state.user}
+                  fits={this.state.fits}
+                  handleDeleteFit={this.handleDeleteFit}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/bottom/details"
+              render={({ location }) => (
+                <BottomDetails
+                  handleDeleteBottom={this.handleDeleteBottom}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/shoe/details"
+              render={({ location }) => (
+                <ShoeDetails
+                  handleDeleteShoe={this.handleDeleteShoe}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/accessory/details"
+              render={({ location }) => (
+                <AccessoryDetails
+                  handleDeleteAccessory={this.handleDeleteAccessory}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/top/details"
+              render={({ location }) => (
+                <TopDetails
+                  handleDeleteTop={this.handleDeleteTop}
+                  location={location}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/fit/details"
+              render={(location) => <FitDetails location={location} />}
+            ></Route>
+            <Route
+              exact
+              path="/fits"
+              render={() => (
+                <AddFitsPage
+                  user={userService.getUser()}
+                  handleAddFit={this.handleAddFit}
+                  tops={this.state.tops}
+                  bottoms={this.state.bottoms}
+                  shoes={this.state.shoes}
+                  accessories={this.state.accessories}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/addTop"
+              render={() => (
+                <AddTopPage
+                  user={userService.getUser()}
+                  handleAddTop={this.handleAddTop}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/addBottom"
+              render={() => (
+                <AddBottomPage
+                  user={userService.getUser()}
+                  handleAddBottom={this.handleAddBottom}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/addShoe"
+              render={() => (
+                <AddShoePage
+                  user={userService.getUser()}
+                  handleAddShoe={this.handleAddShoe}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/addAccessory"
+              render={() => (
+                <AddAccessoryPage
+                  user={userService.getUser()}
+                  handleAddAccessory={this.handleAddAccessory}
+                />
+              )}
+            />
             <Route
               exact
               path="/editTop"
@@ -360,10 +468,10 @@ class App extends Component {
                 <EditFitPage
                   handleUpdateFit={this.handleUpdateFit}
                   location={location}
-                  tops={this.state.tops} 
-                  bottoms ={this.state.bottoms} 
-                  shoes = {this.state.shoes} 
-                  accessories = {this.state.accessories}
+                  tops={this.state.tops}
+                  bottoms={this.state.bottoms}
+                  shoes={this.state.shoes}
+                  accessories={this.state.accessories}
                 />
               )}
             />
