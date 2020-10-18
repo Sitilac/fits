@@ -63,6 +63,7 @@ class AddFitPage extends Component {
   render() {
     return (
       <>
+      <h2>ADD FIT</h2>
         <label>Name</label>
         <input name="name" type="text" onChange={this.handleChange} required></input>
         <br />
