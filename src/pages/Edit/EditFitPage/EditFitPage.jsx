@@ -4,7 +4,12 @@ import {Link} from 'react-router-dom';
 class EditFitPage extends Component {
   state = {
     invalidForm: false,
-    formData: this.props.location.state.fit
+    formData:{
+      accessory:this.props.location.state.fit.accessory._id,
+      bottom:this.props.location.state.fit.bottom._id,
+      top:this.props.location.state.fit.top._id,
+      shoes:this.props.location.state.fit.shoes._id,
+    }
   };
 
   formRef = React.createRef();
@@ -21,19 +26,35 @@ class EditFitPage extends Component {
     });
   };
 
-  componentDidMount() {
-    if (this.state.formData.top === "" && this.props.tops[0]) {
-      this.setState({
-        formData: {
-          top: this.props.tops[0],
-          bottom: this.props.bottoms[0],
-          shoe: this.props.shoes[0],
-          accessory: this.props.accessories[0],
-          user: this.props.user,
-        },
-      });
-    }
+  componentDidUpdate() {
+    // if (this.state.formData.top === "") {
+    //   console.log(this.props.tops);
+    //   this.setState({
+    //     formData: {
+    //       top: this.props.tops[0],
+    //       bottom: this.props.bottoms[0],
+    //       shoe: this.props.shoes[0],
+    //       accessory: this.props.accessories[0],
+    //       user: this.props.user,
+    //     },
+    //   });
+    // }
   }
+  
+  componentDidMount() {
+    // if (this.state.formData.top === "" && this.props.tops[0]) {
+    //   this.setState({
+    //     formData: {
+    //       top: this.props.tops[0],
+    //       bottom: this.props.bottoms[0],
+    //       shoe: this.props.shoes[0],
+    //       accessory: this.props.accessories[0],
+    //       user: this.props.user,
+    //     },
+    //   });
+    // }
+  }
+  
 
   render() {
 

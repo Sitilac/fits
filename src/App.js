@@ -126,6 +126,9 @@ class App extends Component {
       this.props.history.push("/")
     );
   };
+  handleUpdateWornTop = async (updatedTopData) => {
+    return 0;
+  };
 
   handleUpdateFit = async (updatedFitData) => {
     console.log("Called");
@@ -243,6 +246,7 @@ class App extends Component {
                     </NavLink>
                   </MDBDropdownMenu>
                 </MDBDropdown>
+                &nbsp;&nbsp;&nbsp;
                 <MDBDropdown>
                   <MDBDropdownToggle caret color="primary">
                     Add New
@@ -254,15 +258,12 @@ class App extends Component {
                     <NavLink exact to="/addTop">
                       <MDBDropdownItem>Add Top</MDBDropdownItem>
                     </NavLink>
-
                     <NavLink exact to="/addBottom">
                       <MDBDropdownItem>Add Bottom</MDBDropdownItem>
                     </NavLink>
-
                     <NavLink exact to="/addShoe">
                       <MDBDropdownItem>Add Shoe</MDBDropdownItem>
                     </NavLink>
-
                     <NavLink exact to="/addAccessory">
                       <MDBDropdownItem>Add Accessory</MDBDropdownItem>
                     </NavLink>
@@ -286,6 +287,9 @@ class App extends Component {
               </>
             )}
           </nav>
+          <div class="logo">
+            <h1>Fitz</h1>
+          </div>
         </header>
         <main>
           <Switch>
