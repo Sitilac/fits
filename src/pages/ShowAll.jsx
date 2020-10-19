@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-const styles = { display: "flex", width: "100vw" };
+const styles = {display:"inline-grid", width: "300px" };
 
 class ShowAll extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class ShowAll extends Component {
   render() {
     return (
       <>
-        <div class="showAll" style="padding-left:100px" style={styles}>
+        <div class="showAll" style={styles}>
           <label>Tops</label>
           <select
             name="top"

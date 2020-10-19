@@ -20,6 +20,7 @@ html{
   height: 100vh;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,6 +38,7 @@ html{
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 
 .App-header {
   background-color: #282c34;
