@@ -82,6 +82,7 @@ class ShowAll extends Component {
               </option>
             ))}
           </select>
+          {this.state.tops ? (
           <Link
             className="btn btn-xs btn-info btnDetails"
             to={{
@@ -91,6 +92,11 @@ class ShowAll extends Component {
           >
             details{" "}
           </Link>
+          ):(
+            <>
+            <h5>No Current Tops</h5>
+            </>
+          )}
           &nbsp;&nbsp;&nbsp;
           <label>Bottoms</label>
           <select
@@ -103,6 +109,7 @@ class ShowAll extends Component {
               </option>
             ))}
           </select>
+          {this.state.bottoms ? (
           <Link
             className="btn btn-xs btn-info btnDetails"
             to={{
@@ -112,6 +119,11 @@ class ShowAll extends Component {
           >
             details{" "}
           </Link>
+          ):(
+            <>
+            <h5>No Current Bottoms</h5>
+            </>
+          )}
           &nbsp;&nbsp;&nbsp;
           <label>Shoes</label>
           <select
@@ -124,6 +136,7 @@ class ShowAll extends Component {
               </option>
             ))}
           </select>
+          {this.state.shoes ? (
           <Link
             className="btn btn-xs btn-info btnDetails"
             to={{
@@ -133,6 +146,11 @@ class ShowAll extends Component {
           >
             details{" "}
           </Link>
+          ):(
+            <>
+            <h5>No Current Shoes</h5>
+            </>
+          )}
           &nbsp;&nbsp;&nbsp;
           <label>accessories</label>
           <select
@@ -145,6 +163,7 @@ class ShowAll extends Component {
               </option>
             ))}
           </select>
+          {this.state.accessories ? (
           <Link
             className="btn btn-xs btn-info btnDetails"
             to={{
@@ -154,6 +173,11 @@ class ShowAll extends Component {
           >
             details{" "}
           </Link>
+          ):(
+            <>
+            <h5>No Current accessories</h5>
+            </>
+          )}
         </div>
       </>
     );

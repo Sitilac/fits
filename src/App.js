@@ -45,7 +45,7 @@ class App extends Component {
     user: userService.getUser(),
     dropDownOpen: false,
   };
-  
+
   handleWornFit = async (updatedFitData) => {
     const updatedFit = await fitApi.update(updatedFitData);
     const newFitArray = this.state.fits.map((p) =>
@@ -53,7 +53,6 @@ class App extends Component {
     );
     this.setState({ fits: newFitArray }, () => this.props.history.push("/"));
   };
-
 
   /*---Crud Add Handlers---*/
   handleAddFit = async (newFitData) => {
@@ -286,11 +285,11 @@ class App extends Component {
               </>
             ) : (
               <>
-                <NavLink class="btn btn-primary login-style"exact to="/login">
+                <NavLink class="btn btn-primary login-style" exact to="/login">
                   LOG IN
                 </NavLink>
                 &nbsp;&nbsp;&nbsp;
-                <NavLink class="btn btn-primary login-style"exact to="/signup">
+                <NavLink class="btn btn-primary login-style" exact to="/signup">
                   SIGN UP
                 </NavLink>
               </>

@@ -23,10 +23,9 @@ class SignupPage extends Component {
         email: this.state.formData.email,
         password: this.state.formData.password
       });
-
       this.props.handleSignupOrLogin();
-      
-      this.props.history.push = ("/");
+      this.props.history.push('/');
+      window.location.reload(false);
     } catch (err) {
       this.updateMessage(err.message);
     }
