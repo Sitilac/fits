@@ -22,7 +22,6 @@ class AddFitPage extends Component {
   };
 
   handleChange = (e) => {
-    console.log("Entered");
     const formData = {
       ...this.state.formData,
       [e.target.name]: e.target.value,
@@ -34,7 +33,6 @@ class AddFitPage extends Component {
 
   componentDidUpdate() {
     if (this.state.formData.top === "") {
-      console.log(this.props.tops);
       this.setState({
         formData: {
           top: this.props.tops[0],

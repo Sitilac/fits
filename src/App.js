@@ -47,7 +47,6 @@ class App extends Component {
   };
   
   handleWornFit = async (updatedFitData) => {
-    console.log("Called");
     const updatedFit = await fitApi.update(updatedFitData);
     const newFitArray = this.state.fits.map((p) =>
       p._id === updatedFit._id ? updatedFit : p
@@ -142,7 +141,6 @@ class App extends Component {
   };
 
   handleUpdateFit = async (updatedFitData) => {
-    console.log("Called");
     const updatedFit = await fitApi.update(updatedFitData);
     const newFitArray = this.state.fits.map((p) =>
       p._id === updatedFit._id ? updatedFit : p
@@ -334,10 +332,6 @@ class App extends Component {
                   user={this.state.user}
                   fits={this.state.fits}
                   handleDeleteFit={this.handleDeleteFit}
-                  // handleUpdateTop={this.handleUpdateTop}
-                  // handleUpdateBotom={this.handleUpdateBottom}
-                  // handleUpdateShoe={this.handleUpdateShoe}
-                  // handleUpdateAccessory={this.handleUpdateAccessory}
                 />
               )}
             />

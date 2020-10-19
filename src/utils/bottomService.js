@@ -12,7 +12,6 @@ export function getOne(bottom){
 }
 
 export function create(bottom) {
-  console.log(tokenService.getToken())
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {

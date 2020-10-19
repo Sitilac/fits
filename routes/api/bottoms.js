@@ -9,7 +9,6 @@ router.delete('/:id',checkAuth,bottomsCtrl.delete);
 router.put('/:id',checkAuth,bottomsCtrl.update);
 
 function checkAuth(req, res, next) {
-  console.log(req.user)
   if (req.user) return next();
   return res.status(401).json({msg: 'Not Authorized'});
 }
