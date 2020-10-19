@@ -81,6 +81,7 @@ nav{
 main .showAll{
  display: flex;
  flex-direction: column;
+ width:50vw;
 }
 
 .btnDetails{

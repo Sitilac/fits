@@ -16,6 +16,10 @@ function ShowAllOutfits(props){
               fit={fit}
               handleDeleteFit={props.handleDeleteFit}
               key={fit._id}
+              // handleUpdateTop={props.handleUpdateTop}
+              // handleUpdateBotom={props.handleUpdateBottom}
+              // handleUpdateShoe={props.handleUpdateShoe}
+              // handleUpdateAccessory={props.handleUpdateAccessory}
             />
           )}
         </div>
