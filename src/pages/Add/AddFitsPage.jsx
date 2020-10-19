@@ -19,7 +19,6 @@ class AddFitPage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleAddFit(this.state.formData);
-    window.location.reload(false);
   };
 
   handleChange = (e) => {

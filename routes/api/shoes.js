@@ -4,10 +4,13 @@ let shoesCtrl = require('../../controllers/api/shoes');
 
 router.get('/user/:id',shoesCtrl.index);
 router.get('/:id',shoesCtrl.show);
-router.post('/',shoesCtrl.create);
-router.delete('/:id',shoesCtrl.delete);
-router.put('/:id',shoesCtrl.update);
+router.post('/',checkAuth,shoesCtrl.create);
+router.delete('/:id',checkAuth,shoesCtrl.delete);
+router.put('/:id',checkAuth,shoesCtrl.update);
 
-
+function checkAuth(req, res, next) {
+  if (req.user) return next();
+  return res.status(401).json({msg: 'Not Authorized'});
+}
 
 module.exports = router;

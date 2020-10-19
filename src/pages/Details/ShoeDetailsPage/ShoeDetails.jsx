@@ -8,6 +8,7 @@ function ShoeDetailsPage(props){
   //this.getOne()
   return(
     <>
+    <div className="mainstyling2">
       <ShoeCard
         key={shoe._id}
         shoe={shoe}
@@ -26,6 +27,7 @@ function ShoeDetailsPage(props){
         }}
       >EDIT
       </Link>
+      </div>
     </>
   );
 }

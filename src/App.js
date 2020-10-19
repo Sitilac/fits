@@ -65,6 +65,7 @@ class App extends Component {
       }),
       () => this.props.history.push("/")
     );
+    window.location.reload(false);
   };
 
   handleAddTop = async (newTopData) => {
@@ -287,11 +288,11 @@ class App extends Component {
               </>
             ) : (
               <>
-                <NavLink exact to="/login">
+                <NavLink class="btn btn-primary login-style"exact to="/login">
                   LOG IN
                 </NavLink>
                 &nbsp;&nbsp;&nbsp;
-                <NavLink exact to="/signup">
+                <NavLink class="btn btn-primary login-style"exact to="/signup">
                   SIGN UP
                 </NavLink>
               </>

@@ -1,3 +1,4 @@
+import tokenService from "./tokenService"
 const BASE_URL = '/api/accessories';
 
 export function getAll(user) {
@@ -13,7 +14,7 @@ export function getOne(accessory){
 export function create(acc) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'content-type': 'application/json'},
+    headers: {'content-type': 'application/json','Authorization': 'Bearer ' + tokenService.getToken()},
     body: JSON.stringify(acc)
   }).then(res => res.json());
 }
@@ -21,13 +22,14 @@ export function create(acc) {
 export function update(acc) {
   return fetch(`${BASE_URL}/${acc._id}`, {
     method: 'PUT',
-    headers: {'content-type': 'application/json'},
+    headers: {'content-type': 'application/json','Authorization': 'Bearer ' + tokenService.getToken()},
     body: JSON.stringify(acc)
   }).then(res => res.json());
 }
 
 export function deleteOne(id) {
   return fetch(`${BASE_URL}/${id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {'content-type': 'application/json','Authorization': 'Bearer ' + tokenService.getToken()},
   }).then(res => res.json());
 }

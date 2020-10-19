@@ -35,6 +35,7 @@ class EditFitPage extends Component {
   render() {
     return (
       <>
+      <div className="mainstyling">
         <label>Name</label>
         <input
           name="name"
@@ -97,6 +98,7 @@ class EditFitPage extends Component {
         <button onClick={this.handleSubmit} className="btn">
           Save Outfit
         </button>
+        </div>
       </>
     );
   }

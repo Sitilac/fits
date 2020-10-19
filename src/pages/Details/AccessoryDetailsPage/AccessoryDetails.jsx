@@ -5,9 +5,10 @@ import AccessoryCard from '../../../components/AccessoryCard'
 function AccessoryDetailsPage(props){
   const accessory = props.location.state.accessories;
 
-  //this.getOne()
+  
   return(
     <>
+    <div className="mainstyling2">
       <AccessoryCard
         key={accessory._id}
         accessory={accessory}
@@ -26,6 +27,7 @@ function AccessoryDetailsPage(props){
         }}
       >EDIT
       </Link>
+      </div>
     </>
   );
 }
