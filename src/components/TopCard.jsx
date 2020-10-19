@@ -9,10 +9,12 @@ function TopCard({top}) {
       </div>
       <div className='panel-body'>
         <dl>
-          <dt>Name</dt>
-          <dd>{top.name}</dd>
-          <dt>Price</dt>
-          <dd>{top.price}</dd>
+          <dt>Name: {top.name}</dt>
+          <dt>Brand: {top.brand}</dt>
+          <dt>Price: {top.price}</dt>
+          <dt>Price: {top.color}</dt>
+          <br/>
+          <dt>Description: {top.description}</dt>
         </dl>
       </div>
       <div className='panel-footer'>

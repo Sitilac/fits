@@ -9,11 +9,12 @@ function ShoeCard({shoe}) {
       </div>
       <div className='panel-body'>
         <dl>
-          <dt>Name</dt>
-          <dd>{shoe.name}</dd>
-          <dt>Price</dt>
-          <dd>{shoe.price}</dd>
-
+        <dt>Name: {shoe.name}</dt>
+          <dt>Brand: {shoe.brand}</dt>
+          <dt>Price: {shoe.price}</dt>
+          <dt>Price: {shoe.color}</dt>
+          <br/>
+          <dt>Description: {shoe.description}</dt>
         </dl>
       </div>
       <div className='panel-footer'>

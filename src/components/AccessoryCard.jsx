@@ -9,10 +9,12 @@ function AccessoryCard({accessory}) {
       </div>
       <div className='panel-body'>
         <dl>
-          <dt>Name</dt>
-          <dd>{accessory.name}</dd>
-          <dt>Price</dt>
-          <dd>{accessory.price}</dd>
+        <dt>Name: {accessory.name}</dt>
+          <dt>Brand: {accessory.brand}</dt>
+          <dt>Price: {accessory.price}</dt>
+          <dt>Price: {accessory.color}</dt>
+          <br/>
+          <dt>Description: {accessory.description}</dt>
 
         </dl>
       </div>

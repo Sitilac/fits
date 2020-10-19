@@ -9,11 +9,12 @@ function BottomCard({bottom}) {
       </div>
       <div className='panel-body'>
         <dl>
-          <dt>Name</dt>
-          <dd>{bottom.name}</dd>
-          <dt>Price</dt>
-          <dd>{bottom.price}</dd>
-
+        <dt>Name: {bottom.name}</dt>
+          <dt>Brand: {bottom.brand}</dt>
+          <dt>Price: {bottom.price}</dt>
+          <dt>Price: {bottom.color}</dt>
+          <br/>
+          <dt>Description: {bottom.description}</dt>
         </dl>
       </div>
       <div className='panel-footer'>

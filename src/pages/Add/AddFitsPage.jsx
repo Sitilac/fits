@@ -124,7 +124,7 @@ class AddFitPage extends Component {
             </option>
           ))}
         </select>
-        <button onClick={this.handleSubmit} className="btn-xs">
+        <button onClick={this.handleSubmit} className="btn fit-btn" >
           ADD Outfit
         </button>
         </div>
