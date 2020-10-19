@@ -45,6 +45,16 @@ class App extends Component {
     user: userService.getUser(),
     dropDownOpen: false,
   };
+  
+  handleWornFit = async (updatedFitData) => {
+    console.log("Called");
+    const updatedFit = await fitApi.update(updatedFitData);
+    const newFitArray = this.state.fits.map((p) =>
+      p._id === updatedFit._id ? updatedFit : p
+    );
+    this.setState({ fits: newFitArray }, () => this.props.history.push("/"));
+  };
+
 
   /*---Crud Add Handlers---*/
   handleAddFit = async (newFitData) => {
@@ -55,6 +65,7 @@ class App extends Component {
       }),
       () => this.props.history.push("/")
     );
+    window.location.reload(false);
   };
 
   handleAddTop = async (newTopData) => {
@@ -277,11 +288,11 @@ class App extends Component {
               </>
             ) : (
               <>
-                <NavLink exact to="/login">
+                <NavLink class="btn btn-primary login-style"exact to="/login">
                   LOG IN
                 </NavLink>
                 &nbsp;&nbsp;&nbsp;
-                <NavLink exact to="/signup">
+                <NavLink class="btn btn-primary login-style"exact to="/signup">
                   SIGN UP
                 </NavLink>
               </>
@@ -323,6 +334,10 @@ class App extends Component {
                   user={this.state.user}
                   fits={this.state.fits}
                   handleDeleteFit={this.handleDeleteFit}
+                  // handleUpdateTop={this.handleUpdateTop}
+                  // handleUpdateBotom={this.handleUpdateBottom}
+                  // handleUpdateShoe={this.handleUpdateShoe}
+                  // handleUpdateAccessory={this.handleUpdateAccessory}
                 />
               )}
             />

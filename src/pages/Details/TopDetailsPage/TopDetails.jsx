@@ -6,6 +6,7 @@ function TopDetailsPage(props){
   const top = props.location.state.tops;
   return(
     <>
+    <div className="mainstyling2">
       <TopCard
         key={top._id}
         top={top}
@@ -25,6 +26,7 @@ function TopDetailsPage(props){
         }}
       >EDIT
       </Link>
+      </div>
     </>
     
   );

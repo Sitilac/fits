@@ -6,6 +6,7 @@ function BottomDetailsPage(props){
   const bottom = props.location.state.bottoms;
   return(
     <>
+    <div className="mainstyling2">
       <BottomCard
         key={bottom._id}
         bottom={bottom}
@@ -24,6 +25,7 @@ function BottomDetailsPage(props){
         }}
       >EDIT
       </Link>
+      </div>
     </>
   );
 }

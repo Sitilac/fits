@@ -1,3 +1,4 @@
+import tokenService from "./tokenService"
 const BASE_URL = '/api/tops';
 
 export function getAll(user) {
@@ -13,7 +14,7 @@ export function getOne(top){
 export function create(top) {
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'content-type': 'application/json'},
+    headers: {'content-type': 'application/json','Authorization': 'Bearer ' + tokenService.getToken()},
     body: JSON.stringify(top)
   }).then(res => res.json());
 }
@@ -21,13 +22,14 @@ export function create(top) {
 export function update(top) {
   return fetch(`${BASE_URL}/${top._id}`, {
     method: 'PUT',
-    headers: {'content-type': 'application/json'},
+    headers: {'content-type': 'application/json','Authorization': 'Bearer ' + tokenService.getToken()},
     body: JSON.stringify(top)
   }).then(res => res.json());
 }
 
 export function deleteOne(id) {
   return fetch(`${BASE_URL}/${id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {'content-type': 'application/json','Authorization': 'Bearer ' + tokenService.getToken()},
   }).then(res => res.json());
 }

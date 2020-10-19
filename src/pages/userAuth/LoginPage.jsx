@@ -8,7 +8,7 @@ class LoginPage extends Component {
     formData: {
       email: "",
       password: "",
-      message: ""
+      message: "",
     },
   };
 
@@ -18,7 +18,6 @@ class LoginPage extends Component {
     e.preventDefault();
     try {
       await userService.login(this.state.formData);
-
       this.props.handleSignupOrLogin();
       this.props.history.push("/");
       window.location.reload(false);
@@ -39,8 +38,8 @@ class LoginPage extends Component {
   };
 
   updateMessage = (msg) => {
-      this.setState({message: msg});
-  }
+    this.setState({ message: msg });
+  };
 
   render() {
     return (

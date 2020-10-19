@@ -7,6 +7,7 @@ function FitDetailsPage(props){
   return(
     
     <>
+    <div className="mainstyling2">
       <FitCard
         key={fit._id}
         fit={fit}
@@ -26,6 +27,7 @@ function FitDetailsPage(props){
         }}
       >EDIT
       </Link>
+      </div>
     </>
     
   );

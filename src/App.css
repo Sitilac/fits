@@ -9,6 +9,9 @@
   font-display: swap;
 }
 
+html{
+  background-color: rgb(88,83,80);
+}
 .App {
   text-align: center;
   font-family: 'MATHERNAL Free';
@@ -47,23 +50,23 @@
 }
 
 .App-header .logo {
- padding-right: 65vw;
+ margin-right: 65vw;
  padding-left: 20vw;
 }
 
 .dropdown-item{
-  background-color: aliceblue;
+  background-color: rgb(88,83,80);
+  color:white;
   min-width: 150px;
   border: none;
 }
-.dropdown-item :hover{
-  background-color:  rgb(35,35,35);
-  min-width: 150px;
-  border: none;
+.panel .panel-default{
+  background-color: rgb(35,35,35);
 }
 
 .dropdown-menu{
-  background-color: aliceblue;
+  background-color: rgb(90,90,90);
+  color:white;
   text-align: left;
 }
 
@@ -78,13 +81,31 @@ nav{
   padding-right: 10vw;
 }
 
+.mainstyling2{
+  display: grid;
+  align-items: center;
+  justify-content: right;
+  padding-right: 10vw;
+  min-width: 30vw;
+}
+
+.panel-default>.panel-heading{
+  color:white;
+  background-color: rgb(35,35,35);
+}
+.panel-default>.panel-footer{
+  color:white;
+  background-color: rgb(35,35,35);
+}
+
 main .showAll{
  display: flex;
  flex-direction: column;
+ width:50vw;
 }
 
 .btnDetails{
-  background-color: rgb(88,83,80) !important;
+  background-color: rgb(35,35,35) !important;
   border-color: rgb(12, 12, 12);
   border-width: 3px;
 }
