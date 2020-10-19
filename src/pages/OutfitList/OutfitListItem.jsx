@@ -7,7 +7,6 @@ function FitListItem({fit, handleDeleteFit}) {
     <div className='panel panel-default'>
       <div className="panel-heading">
         <h3 className='panel-title'>{fit.name}</h3>
-        <h3>{console.log(fit.top.name)}</h3>
       </div>
       <div className='panel-footer FitListItem-action-panel'>
       <h4>{fit.top.name}</h4>

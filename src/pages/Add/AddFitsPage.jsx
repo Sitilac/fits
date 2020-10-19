@@ -69,6 +69,7 @@ class AddFitPage extends Component {
           name="name"
           type="text"
           onChange={this.handleChange}
+          autoComplete="off"
           required
         ></input>
         <br />

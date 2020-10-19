@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
+const styles = {display:"inline-grid", width: "300px" };
 
 class LoginPage extends Component {
   state = {
@@ -44,6 +45,7 @@ class LoginPage extends Component {
   render() {
     return (
       <>
+      <div class="showAll" style={styles}>
         <h1>Log In</h1>
         <form
           ref={this.formRef}
@@ -78,6 +80,7 @@ class LoginPage extends Component {
             LOG IN
           </button>
         </form>
+        </div>
       </>
     );
   }
